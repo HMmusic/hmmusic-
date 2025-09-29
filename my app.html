@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carbon Academy — Learn & Grow</title>
+  <style>
+    :root {
+      --accent:#0b84ff;
+      --danger:#d9534f;
+      --muted:#555;
+    }
+    body {
+      font-family: Inter, system-ui, Arial, sans-serif;
+      margin: 0;
+      background: #f6f8fb;
+      color: #111;
+    }
+    header {
+      background: var(--accent);
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+    header h1 { margin: 0; font-size: 1.8rem; }
+    nav { margin-top: .5rem; }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 .8rem;
+      font-weight: 500;
+    }
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: #fff;
+    }
+    .hero h2 { font-size: 2.2rem; margin-bottom: .5rem; }
+    .hero p { color: var(--muted); font-size: 1.1rem; }
+    .courses {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+    .course-card {
+      background: #fff;
+      padding: 1.2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.08);
+      text-align: center;
+      transition: transform .2s;
+    }
+    .course-card:hover { transform: translateY(-4px); }
+    .course-card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .course-card h3 { margin: .5rem 0; font-size: 1.2rem; }
+    .course-card p { font-size: .9rem; color: var(--muted); }
+    .price { font-weight: 700; margin: .8rem 0; }
+    .btn {
+      background: var(--accent);
+      color: white;
+      padding: 10px 18px;
+      border-radius: 8px;
+      border: 0;
+      cursor: pointer;
+      font-size: .95rem;
+      font-weight: 600;
+      transition: background 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn:hover { background: #0a73e0; }
+    footer {
+      background: #111;
+      color: #aaa;
+      text-align: center;
+      padding: 1rem;
+      font-size: .85rem;
+      margin-top: 2rem;
+    }
+    /* Fake modal */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      visibility: hidden;
+    }
+    .modal.active { visibility: visible; }
+    .modal-content {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+    }
+    .close { cursor: pointer; color: var(--muted); float: right; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Carbon Academy</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#courses">Courses</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Learn. Grow. Succeed.</h2>
+    <p>High-quality online courses to boost your career and skills.</p>
+  </section>
+
+  <section id="courses" class="courses">
+    <div class="course-card">
+      <img src="https://via.placeholder.com/400x220.png?text=Web+Development" alt="Course">
+      <h3>Web Development Bootcamp</h3>
+      <p>Learn HTML, CSS, JavaScript, and build real-world projects.</p>
+      <div class="price">₹1999</div>
+      <button class="btn" onclick="openModal('Web Development Bootcamp')">Buy Now</button>
+    </div>
+    <div class="course-card">
+      <img src="https://via.placeholder.com/400x220.png?text=Digital+Marketing" alt="Course">
+      <h3>Digital Marketing Mastery</h3>
+      <p>Master SEO, social media, and ads to grow any business.</p>
+      <div class="price">₹1499</div>
+      <button class="btn" onclick="openModal('Digital Marketing Mastery')">Buy Now</button>
+    </div>
+    <div class="course-card">
+      <img src="https://via.placeholder.com/400x220.png?text=Graphic+Design" alt="Course">
+      <h3>Graphic Design Basics</h3>
+      <p>Learn Canva, Photoshop, and create amazing designs.</p>
+      <div class="price">₹999</div>
+      <button class="btn" onclick="openModal('Graphic Design Basics')">Buy Now</button>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <p>📧 support@carbonacademy.com | 📞 +91-9876543210</p>
+    <p>© 2025 Carbon Academy. All rights reserved.</p>
+  </footer>
+
+  <!-- Modal -->
+  <div id="checkoutModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">✖</span>
+      <h2 id="courseName">Checkout</h2>
+      <p>Currently, payments are not available.<br> 
+      <strong>Payment Not Completed ❌</strong></p>
+      <a href="payment-failed.html" class="btn">Go to Status Page</a>
+    </div>
+  </div>
+
+  <script>
+    function openModal(course) {
+      document.getElementById("courseName").innerText = course + " — Checkout";
+      document.getElementById("checkoutModal").classList.add("active");
+    }
+    function closeModal() {
+      document.getElementById("checkoutModal").classList.remove("active");
+    }
+  </script>
+</body>
+</html>
